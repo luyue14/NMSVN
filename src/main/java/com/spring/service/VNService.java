@@ -128,10 +128,10 @@ public class VNService {
 				
 				int blockSize  = 0;
 				try{
-					 blockSize  = dpInventory.getBlockSize();//获取dpInventory中的blockSize;
+					 blockSize  = dpInventory.getBlockSize();
 				}
 				catch(Exception e){
-					blockSize = 10;
+					blockSize = 1;
 					dpInventoryService.updateBlockSize(dpId, blockSize);
 				}
 				
@@ -145,7 +145,7 @@ public class VNService {
 				
 				int reservedSize  = 0;
 				try{
-					reservedSize  = dpInventory.getReservedSize();//获取dpInventory中的reserveSize;
+					reservedSize  = dpInventory.getReservedSize();//鑾峰彇dpInventory涓殑reserveSize;
 				}
 				catch(Exception e){
 					reservedSize = 10;
@@ -156,7 +156,7 @@ public class VNService {
 				int blockFLagSize = 0;
 				List<BlockFlag> blockFlags ;
 				try{
-					blockFlags = dpInventory.getBlockFlag(); //获取dpInventory中的blockFLag[];
+					blockFlags = dpInventory.getBlockFlag(); //鑾峰彇dpInventory涓殑blockFLag[];
 				}
 				catch(Exception e){
 					blockFlags = new ArrayList<BlockFlag>();
@@ -188,8 +188,9 @@ public class VNService {
 				}
 			
 				if(blockNo ==  -1){
+					
 					logger.error("Space is not enough!");
-					break;
+					return null;
 				}
 				
 				
@@ -206,7 +207,7 @@ public class VNService {
 					Integer vnTableId =k;
 					t.setVnTableId(vnTableId);
 					
-					//增
+					//澧�
 					Integer tableId = reservedSize+blockNo*blockSize+k;
 					t.setTableId(tableId);
 					tableMapping.add(t);

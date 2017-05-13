@@ -56,21 +56,22 @@ public class DeployVn {
 
 		List<SwitchMapping> switchMappings = vnService.formSwitchmapping(vnConfigs);
 		//flowSpace.setNodeId(null);
-		vnConfigService.saveFlowSpaces(flowSpace);
-		vnConfigService.saveSwitchMappings(switchMappings);
-		vnConfigService.saveTableMappings(tableMappings);
-		//vnConfigService.saveVnConfigs(vnConfigs);
-		vnId = vnConfig.getVnId();
-		Long timestamp = vnConfig.getTimeStamp();
-		
-		VnConfig vn = vnConfigService.getByTimestamp(timestamp);
-		vn.setSelected(true);
-		vnConfigService.deleteByTimestamp(timestamp);
-		vnConfigService.saveVnConfig(vn);
+		if(tableMappings != null){
+			vnConfigService.saveFlowSpaces(flowSpace);
+			vnConfigService.saveSwitchMappings(switchMappings);
+			vnConfigService.saveTableMappings(tableMappings);
+			//vnConfigService.saveVnConfigs(vnConfigs);
+			vnId = vnConfig.getVnId();
+			Long timestamp = vnConfig.getTimeStamp();
+			
+			VnConfig vn = vnConfigService.getByTimestamp(timestamp);
+			vn.setSelected(true);
+			vnConfigService.deleteByTimestamp(timestamp);
+			vnConfigService.saveVnConfig(vn);
+		}
 		//flowSpace.setEdgePorts(null);
 		int sleepTime=0;
 		while(sleepTime<10 && links.size()==0){
-			//轮询数据库
 			System.out.println("can not find link!!!");
 			try{
 			    Thread.currentThread().sleep(1000);

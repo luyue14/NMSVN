@@ -22,16 +22,16 @@ public class CheckHandler {
 	@Before("checkHandler()")
 	public void beforeHandle(JoinPoint joinPoint) {
 		StringBuffer sb = new StringBuffer();  
-		sb.append("开始方法："+joinPoint.getTarget().getClass() + "." + joinPoint.getSignature().getName()+ "()  ");  
-		sb.append("Info：[enter into handler]");  
+		sb.append("开始方法"+joinPoint.getTarget().getClass() + "." + joinPoint.getSignature().getName()+ "()  ");  
+		sb.append("enter into handler]");  
         logger.info(sb.toString());  
 	}
 	
 	@After("checkHandler()")
 	public void afterHandle(JoinPoint joinPoint) {
 		StringBuffer sb = new StringBuffer();  
-		sb.append("结束方法："+joinPoint.getTarget().getClass() + "." + joinPoint.getSignature().getName()+ "()  ");  
-		sb.append("Info：[after into handler]");  
+		sb.append("结束方法"+joinPoint.getTarget().getClass() + "." + joinPoint.getSignature().getName()+ "()  ");  
+		sb.append("after into handler]");  
 		logger.info(sb.toString());
 	}
 	
@@ -39,8 +39,8 @@ public class CheckHandler {
 	public void afterThrowE(JoinPoint joinPoint,Exception ex) {
 		logger.info("after throw exception.");
 		StringBuffer sb = new StringBuffer();  
-		//sb.append("开始方法："+joinPoint.getTarget().getClass() + "." + joinPoint.getSignature().getName()+ "()  ");  
-        sb.append("错误信息如下：["+ex.getMessage()+"]");  
+		//sb.append("寮�濮嬫柟娉曪細"+joinPoint.getTarget().getClass() + "." + joinPoint.getSignature().getName()+ "()  ");  
+        sb.append("抛出异常"+ex.getMessage()+"]");  
         logger.error(sb.toString());  
 	}
 	/*
