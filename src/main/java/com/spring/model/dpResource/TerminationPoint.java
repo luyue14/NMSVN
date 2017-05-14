@@ -1,8 +1,6 @@
 
 package com.spring.model.dpResource;
 
-import org.neo4j.cypher.internal.compiler.v2_2.docgen.plannerDocGen.predicateConverter;
-
 public class TerminationPoint {
 
     private String tpId;
