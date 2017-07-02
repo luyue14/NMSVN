@@ -145,7 +145,7 @@ public class VNService {
 				
 				int reservedSize  = 0;
 				try{
-					reservedSize  = dpInventory.getReservedSize();//鑾峰彇dpInventory涓殑reserveSize;
+					reservedSize  = dpInventory.getReservedSize();
 				}
 				catch(Exception e){
 					reservedSize = 10;
@@ -156,7 +156,7 @@ public class VNService {
 				int blockFLagSize = 0;
 				List<BlockFlag> blockFlags ;
 				try{
-					blockFlags = dpInventory.getBlockFlag(); //鑾峰彇dpInventory涓殑blockFLag[];
+					blockFlags = dpInventory.getBlockFlag();
 				}
 				catch(Exception e){
 					blockFlags = new ArrayList<BlockFlag>();
@@ -207,7 +207,6 @@ public class VNService {
 					Integer vnTableId =k;
 					t.setVnTableId(vnTableId);
 					
-					//澧�
 					Integer tableId = reservedSize+blockNo*blockSize+k;
 					t.setTableId(tableId);
 					tableMapping.add(t);

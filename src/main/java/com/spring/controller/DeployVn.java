@@ -63,11 +63,14 @@ public class DeployVn {
 			//vnConfigService.saveVnConfigs(vnConfigs);
 			vnId = vnConfig.getVnId();
 			Long timestamp = vnConfig.getTimeStamp();
-			
-			VnConfig vn = vnConfigService.getByTimestamp(timestamp);
-			vn.setSelected(true);
-			vnConfigService.deleteByTimestamp(timestamp);
-			vnConfigService.saveVnConfig(vn);
+			try{
+				VnConfig vn = vnConfigService.getByTimestamp(timestamp);
+				vn.setSelected(true);
+				vnConfigService.deleteByTimestamp(timestamp);
+				vnConfigService.saveVnConfig(vn);
+			} catch(Exception e){
+				System.out.println("Íø¹Ü µ÷ÓÃ");
+			}
 		}
 		//flowSpace.setEdgePorts(null);
 		int sleepTime=0;
